@@ -11,10 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import br.com.fiap.contrataa.ui.theme.FiapContrataaTheme
 
+
+// O que seria necessario adicioar
+// Nome, email, celular, idade, foto de perfil pais de origem, cidade atual, habilidades, idiomas falado, deficiencias (opicional)
 @Composable
 fun UserProfile() {
 	Column(
@@ -120,3 +126,10 @@ fun UserProfile() {
 	}
 }
 
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+private fun UserProfilePreview() {
+	FiapContrataaTheme {
+		UserProfile()
+	}
+}

@@ -1,6 +1,5 @@
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,9 +9,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -27,11 +27,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import br.com.fiap.contrataa.R
+import br.com.fiap.contrataa.ui.theme.FiapContrataaTheme
 
 @Composable
 private fun AppScaffold(
@@ -40,20 +42,18 @@ private fun AppScaffold(
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Header(title)
+//        Header(title)
         Box(
             modifier = Modifier
                 .weight(1f)
-                .fillMaxWidth()
-                .padding(vertical = 16.dp),
+                .fillMaxWidth(),
             contentAlignment = Alignment.Center
         ) {
             content()
         }
-        Footer()
+//        Footer()
     }
 }
 
@@ -81,7 +81,7 @@ private fun Footer() {
         modifier = Modifier
             .fillMaxWidth()
             .height(40.dp)
-            .background(Color.Gray),
+            .background(Color(0xFF57449a)),
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -110,97 +110,103 @@ private fun CadastroForm(navController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(36.dp)
+            .fillMaxSize()
+            .background(Color.Black)
     ) {
-        // Imagem entre o header e o título
+
         Image(
             painter = painterResource(id = R.drawable.ic_launcher_foreground),
             contentDescription = "Logo",
             modifier = Modifier
-                .size(120.dp)
-                .padding(bottom = 16.dp)
+                .size(240.dp)
+                .padding(bottom = 24.dp)
+                .background(Color(0xFF57449a))
         )
-
-        Spacer(modifier = Modifier.height(32.dp))
-
         Text(
             text = "Crie sua Conta",
             fontSize = 24.sp,
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(bottom = 16.dp)
+            color = Color.White,
+            modifier = Modifier.padding(bottom = 64.dp)
         )
+
 
         TextField(
             value = username,
             onValueChange = { username = it },
-            label = { Text("Nome de Usuário") },
-            modifier = Modifier.fillMaxWidth()
+            label = { Text("Nome de Usuário", fontSize = 14.sp) },
+            shape = RoundedCornerShape(8.dp),
+            modifier = Modifier
+                .fillMaxWidth(0.6f)
+                .height(32.dp)
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(28.dp))
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("E-mail") },
-            modifier = Modifier.fillMaxWidth()
+            value = username,
+            onValueChange = { username = it },
+            label = { Text("Email", fontSize = 14.sp) },
+            shape = RoundedCornerShape(8.dp),
+            modifier = Modifier
+                .fillMaxWidth(0.6f)
+                .height(32.dp)
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(28.dp))
 
         TextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text("Senha") },
+            label = { Text("Senha", fontSize = 14.sp) },
             visualTransformation = PasswordVisualTransformation(),
-            modifier = Modifier.fillMaxWidth()
+            shape = RoundedCornerShape(8.dp),
+            modifier = Modifier
+                .fillMaxWidth(0.6f)
+                .height(32.dp)
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(28.dp))
 
         TextField(
             value = confirmPassword,
             onValueChange = { confirmPassword = it },
-            label = { Text("Confirme sua Senha") },
+            label = { Text("Confirme sua Senha", fontSize = 14.sp) },
             visualTransformation = PasswordVisualTransformation(),
-            modifier = Modifier.fillMaxWidth()
+            shape = RoundedCornerShape(8.dp),
+            modifier = Modifier
+                .fillMaxWidth(0.6f)
+                .height(32.dp)
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(32.dp))
 
         Button(
             onClick = {
-                // Lógica para processar o cadastro
                 navController.navigate("perfil")
             },
-            shape = RoundedCornerShape(8.dp)
-        ) {
-            Text("Cadastrar")
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = "Já tem uma conta?\nClique AQUI para entrar",
-            fontSize = 16.sp,
-            textDecoration = TextDecoration.Underline,
-            color = MaterialTheme.colorScheme.primary,
-            textAlign = TextAlign.Center,
+            shape = RoundedCornerShape(8.dp),
             modifier = Modifier
-                .fillMaxWidth()
-                .clickable {
-                    navController.navigate("login")
-                }
-        )
+                .width(120.dp)
+                .height(50.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF57449A),
+                contentColor = Color.White
+            )
+        ) {
+            Text(
+                text = "Cadastrar",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
     }
 }
 
-//
-//@Preview(showBackground = true, showSystemUi = true)
-//@Composable
-//private fun CadastroScreenPreview() {
-//    FiapContrataaTheme {
-//        CadastroScreen(rememberNavController())
-//    }
-//}
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+private fun CadastroScreenPreview() {
+    FiapContrataaTheme {
+        CadastroScreen(rememberNavController())
+    }
+}
