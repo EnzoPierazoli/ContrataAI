@@ -1,18 +1,27 @@
 package br.com.fiap.contrataa
 
+import CadastroScreen
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -20,11 +29,14 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import br.com.fiap.contrataa.screens.LoginScreen
 import br.com.fiap.contrataa.ui.theme.FiapContrataaTheme
-import br.com.fiap.contrataa.ui.theme.UserProfile
+import br.com.fiap.contrataa.screens.UserProfile
+
 
 class MainActivity : ComponentActivity() {
 	@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -39,7 +51,7 @@ class MainActivity : ComponentActivity() {
 				) {
 					NavHost(navController, startDestination = "login") {
 						composable("login") { LoginScreen(navController) }
-						composable("cadastro") { CadastroScreen() }
+						composable("cadastro") { CadastroScreen(navController) }
 						composable("perfil") { UserProfile() }
 					}
 				}
@@ -54,7 +66,9 @@ private fun AppScaffold(
 	content: @Composable () -> Unit
 ) {
 	Column(
-		modifier = Modifier.fillMaxSize(),
+		modifier = Modifier
+			.fillMaxSize()
+			.background(Color.Black),
 		verticalArrangement = Arrangement.SpaceBetween,
 		horizontalAlignment = Alignment.CenterHorizontally
 	) {
@@ -108,89 +122,131 @@ private fun Footer() {
 }
 
 @Composable
-private fun LoginScreen(navController: androidx.navigation.NavHostController) {
-	AppScaffold(title = "Login") {
-		LoginForm(navController)
+fun CadastroScreen(navController: NavHostController) {
+	AppScaffold(title = "Cadastro") {
+		CadastroForm(navController)
 	}
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun LoginForm(navController: androidx.navigation.NavHostController) {
+private fun CadastroForm(navController: NavHostController) {
 	var username by remember { mutableStateOf("") }
+	var email by remember { mutableStateOf("") }
 	var password by remember { mutableStateOf("") }
+	var confirmPassword by remember { mutableStateOf("") }
 
 	Column(
 		horizontalAlignment = Alignment.CenterHorizontally,
-		verticalArrangement = Arrangement.Center,
+		verticalArrangement = Arrangement.spacedBy(8.dp),
 		modifier = Modifier
-			.fillMaxWidth()
+			.fillMaxSize()
+			.background(Color.Black) // Fundo preto no formulário
 			.padding(36.dp)
+			.verticalScroll(rememberScrollState())
 	) {
+		Image(
+			painter = painterResource(id = R.drawable.ic_launcher_foreground),
+			contentDescription = "Logo",
+			modifier = Modifier
+				.size(120.dp)
+				.padding(bottom = 16.dp)
+		)
+
 		Text(
-			text = "Faça seu Login",
+			text = "Crie sua Conta",
 			fontSize = 24.sp,
 			textAlign = TextAlign.Center,
+			color = Color.White, // Texto branco para contraste
 			modifier = Modifier.padding(bottom = 16.dp)
 		)
 
 		TextField(
 			value = username,
 			onValueChange = { username = it },
-			label = { Text("Usuário") },
-			modifier = Modifier.fillMaxWidth()
+			label = { Text("Nome de Usuário", color = Color.White) },
+			modifier = Modifier.fillMaxWidth(),
+			colors = TextFieldDefaults.colors(
+				unfocusedContainerColor = Color.DarkGray,
+				focusedContainerColor = Color.Gray,
+				cursorColor = Color.White,
+				focusedLabelColor = Color.White
+			)
 		)
 
-		Spacer(modifier = Modifier.height(8.dp))
+		TextField(
+			value = email,
+			onValueChange = { email = it },
+			label = { Text("E-mail", color = Color.White) },
+			modifier = Modifier.fillMaxWidth(),
+			colors = TextFieldDefaults.colors(
+				unfocusedContainerColor = Color.DarkGray,
+				focusedContainerColor = Color.Gray,
+				cursorColor = Color.White,
+				focusedLabelColor = Color.White
+			)
+		)
 
 		TextField(
 			value = password,
 			onValueChange = { password = it },
-			label = { Text("Senha") },
+			label = { Text("Senha", color = Color.White) },
 			visualTransformation = PasswordVisualTransformation(),
-			modifier = Modifier.fillMaxWidth()
+			modifier = Modifier.fillMaxWidth(),
+			colors = TextFieldDefaults.colors(
+				unfocusedContainerColor = Color.DarkGray,
+				focusedContainerColor = Color.Gray,
+				cursorColor = Color.White,
+				focusedLabelColor = Color.White
+			)
 		)
 
-		Spacer(modifier = Modifier.height(16.dp))
+		TextField(
+			value = confirmPassword,
+			onValueChange = { confirmPassword = it },
+			label = { Text("Confirme sua Senha", color = Color.White) },
+			visualTransformation = PasswordVisualTransformation(),
+			modifier = Modifier.fillMaxWidth(),
+			colors = TextFieldDefaults.colors(
+				unfocusedContainerColor = Color.DarkGray,
+				focusedContainerColor = Color.Gray,
+				cursorColor = Color.White,
+				focusedLabelColor = Color.White
+			)
+		)
 
 		Button(
 			onClick = {
-				// validar usuario e sennha
-
-				navController.navigate("perfil") 
-
-		    },
-			shape = RoundedCornerShape(8.dp)
+				navController.navigate("perfil")
+			},
+			shape = RoundedCornerShape(8.dp),
+			modifier = Modifier.fillMaxWidth(),
+			colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black)
 		) {
-			Text("Entrar")
+			Text("Cadastrar")
 		}
 
-		Spacer(modifier = Modifier.height(16.dp))
+		Spacer(modifier = Modifier.height(8.dp))
 
 		Text(
-			text = "Não possui cadastro ainda?\nClique AQUI",
+			text = "Já tem uma conta?\nClique AQUI para entrar",
 			fontSize = 16.sp,
 			textDecoration = TextDecoration.Underline,
-			color = MaterialTheme.colorScheme.primary,
-			modifier = Modifier.clickable {
-				navController.navigate("cadastro")
-			}
+			color = Color.White,
+			textAlign = TextAlign.Center,
+			modifier = Modifier
+				.fillMaxWidth()
+				.clickable {
+					navController.navigate("login")
+				}
 		)
-	}
-}
-
-@Composable
-fun CadastroScreen() {
-	AppScaffold(title = "Cadastro") {
-		Text("Tela de Cadastro", fontSize = 24.sp, textAlign = TextAlign.Center)
 	}
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-private fun LoginScreenPreview() {
+private fun CadastroScreenPreview() {
 	FiapContrataaTheme {
-		LoginScreen(rememberNavController())
+		CadastroScreen(rememberNavController())
 	}
 }
 
