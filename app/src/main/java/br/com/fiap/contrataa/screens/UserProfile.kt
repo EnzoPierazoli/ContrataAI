@@ -14,13 +14,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.Image
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
+import br.com.fiap.contrataa.R
 import br.com.fiap.contrataa.ui.theme.FiapContrataaTheme
 
-
-// O que seria necessario adicioar
-// Nome, email, celular, idade, foto de perfil pais de origem, cidade atual, habilidades, idiomas falado, deficiencias (opicional)
 @Composable
 fun UserProfile() {
 	Column(
@@ -28,41 +28,87 @@ fun UserProfile() {
 		verticalArrangement = Arrangement.Top,
 		modifier = Modifier
 			.fillMaxSize()
-			.background(Color.Black)
+			.background(Color(0xFF6141AC))
 			.padding(16.dp)
 	) {
-		// Foto de perfil (simulada)
 		Box(
 			modifier = Modifier
-				.size(100.dp)
+				.size(120.dp)
 				.clip(CircleShape)
-				.background(Color(0xFF6200EE)), // Roxo
+				.background(Color.White),
 			contentAlignment = Alignment.Center
 		) {
-			Text(
-				text = "J",
-				fontSize = 40.sp,
-				fontWeight = FontWeight.Bold,
-				color = Color.White
+			Image(
+				painter = painterResource(id = R.drawable.perfil),
+				contentDescription = "Foto de perfil",
+				modifier = Modifier.fillMaxSize()
 			)
 		}
 
-		Spacer(modifier = Modifier.height(16.dp))
+		Spacer(modifier = Modifier.height(24.dp))
 
-
+		// Nome e e-mail
 		Text(
-			text = "Juliana Nunes",
+			text = "José Carlos",
 			fontSize = 24.sp,
 			fontWeight = FontWeight.Bold,
 			color = Color.White
 		)
 
-
 		Text(
-			text = "juliana.nunes@email.com",
+			text = "josecarlos.nunes@email.com",
 			fontSize = 14.sp,
 			color = Color.Gray
 		)
+
+		Spacer(modifier = Modifier.height(24.dp))
+
+		
+		Card(
+			modifier = Modifier
+				.fillMaxWidth()
+				.padding(16.dp),
+			shape = RoundedCornerShape(12.dp),
+			colors = CardDefaults.cardColors(containerColor = Color(0xFF91BBB0))
+		) {
+			Column(
+				modifier = Modifier.padding(16.dp),
+				horizontalAlignment = Alignment.Start
+			) {
+				Text(
+					text = "Informações do Profissional",
+					fontSize = 18.sp,
+					fontWeight = FontWeight.Bold,
+					color = Color.White
+				)
+				Spacer(modifier = Modifier.height(16.dp))
+				Text(text = "Especialidade: Eletricista", fontSize = 14.sp, color = Color.White)
+				Text(text = "Experiência: 5 anos", fontSize = 14.sp, color = Color.White)
+				Text(text = "Certificações: NR-10, NR-35", fontSize = 14.sp, color = Color.White)
+
+				Spacer(modifier = Modifier.height(8.dp))
+
+
+				Row(verticalAlignment = Alignment.CenterVertically) {
+					Text(text = "Avaliações:", fontSize = 14.sp, color = Color.White)
+					Spacer(modifier = Modifier.width(8.dp))
+					repeat(4) {
+						Icon(
+							imageVector = Icons.Filled.Star,
+							contentDescription = "Estrela",
+							tint = Color.Yellow,
+							modifier = Modifier.size(18.dp)
+						)
+					}
+					Icon(
+						imageVector = Icons.Filled.Star,
+						contentDescription = "Estrela vazia",
+						tint = Color.Gray,
+						modifier = Modifier.size(18.dp)
+					)
+				}
+			}
+		}
 
 		Spacer(modifier = Modifier.height(24.dp))
 
@@ -76,51 +122,59 @@ fun UserProfile() {
 		) {
 			Column(
 				modifier = Modifier.padding(16.dp),
-				horizontalAlignment = Alignment.CenterHorizontally
+				horizontalAlignment = Alignment.Start
 			) {
 				Text(
-					text = "Informações do Perfil",
+					text = "Histórico de Serviços",
 					fontSize = 18.sp,
 					fontWeight = FontWeight.Bold,
 					color = Color.White
 				)
+				Spacer(modifier = Modifier.height(16.dp))
+				Text(
+					text = "Instalação Elétrica - 12/03/2025",
+					fontSize = 14.sp,
+					color = Color.White
+				)
 				Spacer(modifier = Modifier.height(8.dp))
-				Text(
-					text = "Cargo: Desenvolvedora Júnior",
-					fontSize = 14.sp,
-					color = Color.White
-				)
-				Text(
-					text = "Empresa: Della Volpe",
-					fontSize = 14.sp,
-					color = Color.White
-				)
+				Button(
+					onClick = { /* Ação para ver detalhes */ },
+					colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF91BBB0))
+				) {
+					Text("Ver Detalhes", color = Color.White)
+				}
 			}
 		}
 
-		Spacer(modifier = Modifier.height(16.dp))
+		Spacer(modifier = Modifier.height(24.dp))
 
-		// Botões de ação
+		// Botões de Ação
 		Column(
 			modifier = Modifier.fillMaxWidth(),
 			horizontalAlignment = Alignment.CenterHorizontally
 		) {
 			Button(
-				onClick = { /* Ação de editar perfil */ },
-				colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE)), // Roxo
-				modifier = Modifier.fillMaxWidth()
+				onClick = { /* Ação para agendar serviço */ },
+				colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF91BBB0)),
+				modifier = Modifier
+					.fillMaxWidth(0.8f)
+					.height(50.dp),
+				shape = RoundedCornerShape(10.dp)
 			) {
-				Text("Editar Perfil", color = Color.White)
+				Text("Agendar Serviço", color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.Bold)
 			}
 
-			Spacer(modifier = Modifier.height(8.dp))
+			Spacer(modifier = Modifier.height(16.dp))
 
 			Button(
-				onClick = { /* Ação de logout */ },
+				onClick = { /* Ação para sair */ },
 				colors = ButtonDefaults.buttonColors(containerColor = Color.Red),
-				modifier = Modifier.fillMaxWidth()
+				modifier = Modifier
+					.fillMaxWidth(0.8f)
+					.height(50.dp),
+				shape = RoundedCornerShape(10.dp)
 			) {
-				Text("Sair", color = Color.White)
+				Text("Sair", color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.Bold)
 			}
 		}
 	}
@@ -128,7 +182,7 @@ fun UserProfile() {
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-private fun UserProfilePreview() {
+fun UserProfilePreview() {
 	FiapContrataaTheme {
 		UserProfile()
 	}

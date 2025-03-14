@@ -114,16 +114,16 @@ private fun CadastroForm(navController: NavHostController) {
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.BackgroundRoxo)),
+            .background(Color(0xFF6141AC)),
     ) {
 
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(id = R.drawable.logo),
             contentDescription = "Logo",
             modifier = Modifier
                 .size(240.dp)
                 .padding(bottom = 24.dp)
-                .background(colorResource(id = R.color.BackgroundRoxo))
+                .background(Color(0xFF6141AC))
         )
         Text(
             text = "Crie sua Conta",
