@@ -23,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -57,40 +58,42 @@ private fun AppScaffold(
     }
 }
 
-@Composable
-private fun Header(title: String) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(60.dp)
-            .background(Color(0xFF57449a)),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = title,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.White
-        )
-    }
-}
+// Footer e Header caso precise
 
-@Composable
-private fun Footer() {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(40.dp)
-            .background(Color(0xFF57449a)),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = "ContrataAí",
-            fontSize = 12.sp,
-            color = Color.White
-        )
-    }
-}
+//@Composable
+//private fun Header(title: String) {
+//    Box(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .height(60.dp)
+//            .background(colorResource(id = R.color.BackgroundRoxo)),
+//        contentAlignment = Alignment.Center
+//    ) {
+//        Text(
+//            text = title,
+//            fontSize = 24.sp,
+//            fontWeight = FontWeight.Bold,
+//            color = colorResource(id = R.color.CorDoTexto)
+//        )
+//    }
+//}
+//
+//@Composable
+//private fun Footer() {
+//    Box(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .height(40.dp)
+//            .background(colorResource(id = R.color.BackgroundRoxo)),
+//        contentAlignment = Alignment.Center
+//    ) {
+//        Text(
+//            text = "ContrataAí",
+//            fontSize = 12.sp,
+//            color = colorResource(id = R.color.CorDoTexto)
+//        )
+//    }
+//}
 
 @Composable
 fun CadastroScreen(navController: NavHostController) {
@@ -111,7 +114,7 @@ private fun CadastroForm(navController: NavHostController) {
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(colorResource(id = R.color.BackgroundRoxo)),
     ) {
 
         Image(
@@ -120,13 +123,13 @@ private fun CadastroForm(navController: NavHostController) {
             modifier = Modifier
                 .size(240.dp)
                 .padding(bottom = 24.dp)
-                .background(Color(0xFF57449a))
+                .background(colorResource(id = R.color.BackgroundRoxo))
         )
         Text(
             text = "Crie sua Conta",
             fontSize = 24.sp,
             textAlign = TextAlign.Center,
-            color = Color.White,
+            color = colorResource(id = R.color.CorDoTexto),
             modifier = Modifier.padding(bottom = 64.dp)
         )
 
@@ -190,9 +193,9 @@ private fun CadastroForm(navController: NavHostController) {
                 .width(120.dp)
                 .height(50.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF57449A),
-                contentColor = Color.White
-            )
+                containerColor = (colorResource(id = R.color.CorDoBotao)),
+                contentColor = Color.Black
+                )
         ) {
             Text(
                 text = "Cadastrar",

@@ -35,7 +35,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-//import br.com.fiap.contrataa.screens.LoginScreen
+import br.com.fiap.contrataa.screens.HomePage
 import br.com.fiap.contrataa.ui.theme.FiapContrataaTheme
 import br.com.fiap.contrataa.screens.UserProfile
 
@@ -54,6 +54,7 @@ class MainActivity : ComponentActivity() {
 					NavHost(navController, startDestination = "login") {
 						composable("login") { LoginScreen(navController) }
 						composable("cadastro") { CadastroScreen(navController) }
+						composable("homepage") { HomePage() }
 						composable("perfil") { UserProfile() }
 					}
 				}

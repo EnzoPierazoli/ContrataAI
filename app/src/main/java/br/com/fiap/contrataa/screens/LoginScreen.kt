@@ -25,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -60,42 +61,44 @@ private fun AppScaffold(
     }
 }
 
-@Composable
-private fun Header(title: String) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(60.dp)
-            .background(Color(0xFF57449a)),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = title,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.White
-        )
-    }
-}
+// Header e Footer caso precise
 
-@Composable
-private fun Footer() {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(40.dp)
-            .background(Color(0xFF57449a))
-            .padding(bottom = 10.dp),
-        contentAlignment = Alignment.Center
-
-    ) {
-        Text(
-            text = "ContrataAI",
-            fontSize = 12.sp,
-            color = Color.White
-        )
-    }
-}
+//@Composable
+//private fun Header(title: String) {
+//    Box(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .height(60.dp)
+//            .background(Color(0xFF57449a)),
+//        contentAlignment = Alignment.Center
+//    ) {
+//        Text(
+//            text = title,
+//            fontSize = 24.sp,
+//            fontWeight = FontWeight.Bold,
+//            color = CorDoTexto
+//        )
+//    }
+//}
+//
+//@Composable
+//private fun Footer() {
+//    Box(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .height(40.dp)
+//            .background(Color(0xFF57449a))
+//            .padding(bottom = 10.dp),
+//        contentAlignment = Alignment.Center
+//
+//    ) {
+//        Text(
+//            text = "ContrataAI",
+//            fontSize = 12.sp,
+//            color = CorDoTexto
+//        )
+//    }
+//}
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
@@ -114,7 +117,7 @@ private fun LoginForm(navController: NavHostController) {
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(colorResource(id = R.color.BackgroundRoxo))
     ) {
 
         Image(
@@ -123,21 +126,21 @@ private fun LoginForm(navController: NavHostController) {
             modifier = Modifier
                 .size(240.dp)
                 .padding(bottom = 24.dp)
-                .background(Color(0xFF57449a))
+                .background(colorResource(id = R.color.BackgroundRoxo))
         )
 
         Text(
             text = "Contrata AI",
             fontSize = 24.sp,
             textAlign = TextAlign.Center,
-            color = Color.White,
+            color = colorResource(id = R.color.CorDoTexto),
             modifier = Modifier.padding(bottom = 6.dp)
         )
         Text(
             text = "Mostre seu talento, seja encontrado,\nSeja contratado!",
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
-            color = Color.White,
+            color = colorResource(id = R.color.CorDoTexto),
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
@@ -172,15 +175,15 @@ private fun LoginForm(navController: NavHostController) {
 
         Button(
             onClick = {
-                navController.navigate("perfil")
+                navController.navigate("homepage")
             },
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .width(100.dp)
                 .height(40.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF57449A),
-                contentColor = Color.White
+                containerColor = colorResource(id = R.color.CorDoBotao),
+                contentColor = Color.Black,
             )
         ) {
             Text(
@@ -196,7 +199,7 @@ private fun LoginForm(navController: NavHostController) {
         Text(
             text = "Não possui cadastro ainda?",
             fontSize = 16.sp,
-            color = Color.White,
+            color = colorResource(id = R.color.CorDoTexto),
             textAlign = TextAlign.Center,
         )
         Text(
@@ -204,7 +207,7 @@ private fun LoginForm(navController: NavHostController) {
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
             textDecoration = TextDecoration.Underline,
-            color = MaterialTheme.colorScheme.primary,
+            color = colorResource(id = R.color.CorDoTexto),
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
