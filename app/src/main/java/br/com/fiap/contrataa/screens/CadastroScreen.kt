@@ -153,7 +153,7 @@ private fun CadastroForm(navController: NavHostController) {
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .fillMaxWidth(0.6f)
-                .height(32.dp)
+                .height(56.dp)
                 .offset(y = (-50).dp)
 
         )
@@ -168,7 +168,7 @@ private fun CadastroForm(navController: NavHostController) {
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .fillMaxWidth(0.6f)
-                .height(32.dp)
+                .height(56.dp)
                 .offset(y = (-50).dp)
 
         )
@@ -184,7 +184,7 @@ private fun CadastroForm(navController: NavHostController) {
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .fillMaxWidth(0.6f)
-                .height(32.dp)
+                .height(56.dp)
                 .offset(y = (-50).dp)
 
         )
@@ -200,7 +200,7 @@ private fun CadastroForm(navController: NavHostController) {
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .fillMaxWidth(0.6f)
-                .height(32.dp)
+                .height(56.dp)
                 .offset(y = (-50).dp)
         )
 
@@ -213,7 +213,7 @@ private fun CadastroForm(navController: NavHostController) {
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .width(120.dp)
-                .height(50.dp),
+                .height(56.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = (colorResource(id = R.color.CorDoBotao)),
                 contentColor = Color.Black

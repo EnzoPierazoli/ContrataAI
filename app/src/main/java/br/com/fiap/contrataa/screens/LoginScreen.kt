@@ -151,7 +151,7 @@ private fun LoginForm(navController: NavHostController) {
             keyboardOptions = KeyboardOptions.Default,
             modifier = Modifier
                 .fillMaxWidth(0.6f)
-                .height(32.dp)
+                .height(56.dp)
                 .offset(y = (-50).dp)
 
         )
@@ -168,7 +168,7 @@ private fun LoginForm(navController: NavHostController) {
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .fillMaxWidth(0.6f)
-                .height(32.dp)
+                .height(56.dp)
                 .offset(y = (-45).dp)
         )
 
