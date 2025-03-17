@@ -7,12 +7,17 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -96,9 +101,17 @@ private fun AppScaffold(
 //}
 
 @Composable
-fun CadastroScreen(navController: NavHostController) {
+fun CadastroScreen(navController: NavHostController, onBackClick: () -> Unit) {
     AppScaffold(title = "Cadastro") {
         CadastroForm(navController)
+    }
+
+    IconButton(onClick = onBackClick, modifier = Modifier.offset(y = 24.dp)) {
+        Icon(
+            imageVector = Icons.Filled.ArrowBack,
+            contentDescription = "Voltar",
+            tint = Color.White
+        )
     }
 }
 
@@ -124,13 +137,13 @@ private fun CadastroForm(navController: NavHostController) {
                 .size(240.dp)
                 .padding(bottom = 12.dp)
                 .background(Color(0xFF6141AC))
+                .offset(y = (-60).dp)
         )
         Text(
             text = "Crie sua Conta",
             fontSize = 24.sp,
             textAlign = TextAlign.Center,
             color = colorResource(id = R.color.CorDoTexto),
-            modifier = Modifier.padding(bottom = 32.dp)
         )
 
         TextField(
@@ -141,6 +154,8 @@ private fun CadastroForm(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth(0.6f)
                 .height(56.dp)
+                .offset(y = (-50).dp)
+
         )
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -154,6 +169,8 @@ private fun CadastroForm(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth(0.6f)
                 .height(56.dp)
+                .offset(y = (-50).dp)
+
         )
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -168,6 +185,8 @@ private fun CadastroForm(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth(0.6f)
                 .height(56.dp)
+                .offset(y = (-50).dp)
+
         )
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -182,10 +201,10 @@ private fun CadastroForm(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth(0.6f)
                 .height(56.dp)
+                .offset(y = (-50).dp)
         )
 
         Spacer(modifier = Modifier.height(10.dp))
-
 
         Button(
             onClick = {
@@ -194,7 +213,7 @@ private fun CadastroForm(navController: NavHostController) {
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .width(120.dp)
-                .height(50.dp),
+                .height(56.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = (colorResource(id = R.color.CorDoBotao)),
                 contentColor = Color.Black
@@ -213,6 +232,6 @@ private fun CadastroForm(navController: NavHostController) {
 @Composable
 private fun CadastroScreenPreview() {
     FiapContrataaTheme {
-        CadastroScreen(rememberNavController())
+        CadastroScreen(rememberNavController(), onBackClick = {})
     }
 }
