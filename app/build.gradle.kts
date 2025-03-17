@@ -56,6 +56,8 @@ dependencies {
 	androidTestImplementation(libs.androidx.ui.test.junit4)
 	debugImplementation(libs.androidx.ui.tooling)
 	debugImplementation(libs.androidx.ui.test.manifest)
+	implementation("androidx.compose.material3:material3:1.2.0")
+
 
 	val nav_version = "2.8.9"
 	// Jetpack Compose integration
@@ -70,5 +72,6 @@ dependencies {
 
 	// Testing Navigation
 	androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
 
 }

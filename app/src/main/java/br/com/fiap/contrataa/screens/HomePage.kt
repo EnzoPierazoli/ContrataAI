@@ -130,18 +130,18 @@ fun MainContent(modifier: Modifier = Modifier) {
         OutlinedTextField(
             value = searchText,
             onValueChange = { searchText = it },
-            placeholder = { Text("O que você precisa?", color = Color.Gray) },
+            placeholder = { Text("O que você precisa?", color = TextColor) },
             modifier = Modifier.fillMaxWidth(),
             trailingIcon = {
                 Icon(Icons.Default.Search, contentDescription = "Buscar", tint = LightPurple)
             },
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = LightPurple,
-                unfocusedBorderColor = DarkPurple,
+                focusedTextColor = Color.White, // Define a cor do texto quando o campo está focado
                 cursorColor = TextColor,
                 disabledBorderColor = DarkPurple
             )
         )
+
 
         Spacer(modifier = Modifier.height(16.dp))
 
