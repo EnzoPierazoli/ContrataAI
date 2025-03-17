@@ -12,15 +12,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -109,8 +111,8 @@ fun LoginScreen(navController: NavHostController) {
 
 @Composable
 private fun LoginForm(navController: NavHostController) {
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var username by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -151,13 +153,13 @@ private fun LoginForm(navController: NavHostController) {
             onValueChange = { username = it },
             label = { Text("Nome de Usuário", fontSize = 14.sp) },
             shape = RoundedCornerShape(8.dp),
+            keyboardOptions = KeyboardOptions.Default,
             modifier = Modifier
                 .fillMaxWidth(0.6f)
-                .height(32.dp)
+                .height(56.dp)
         )
 
-
-        Spacer(modifier = Modifier.height(28.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
 
         TextField(
@@ -165,10 +167,11 @@ private fun LoginForm(navController: NavHostController) {
             onValueChange = { password = it },
             label = { Text("Senha", fontSize = 14.sp) },
             visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions.Default,
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .fillMaxWidth(0.6f)
-                .height(32.dp)
+                .height(56.dp)
         )
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -193,7 +196,6 @@ private fun LoginForm(navController: NavHostController) {
             )
         }
 
-
         Spacer(modifier = Modifier.height(20.dp))
 
         Text(
@@ -214,7 +216,6 @@ private fun LoginForm(navController: NavHostController) {
                     navController.navigate("cadastro")
                 }
         )
-
     }
 }
 

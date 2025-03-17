@@ -122,7 +122,7 @@ private fun CadastroForm(navController: NavHostController) {
             contentDescription = "Logo",
             modifier = Modifier
                 .size(240.dp)
-                .padding(bottom = 24.dp)
+                .padding(bottom = 12.dp)
                 .background(Color(0xFF6141AC))
         )
         Text(
@@ -130,9 +130,8 @@ private fun CadastroForm(navController: NavHostController) {
             fontSize = 24.sp,
             textAlign = TextAlign.Center,
             color = colorResource(id = R.color.CorDoTexto),
-            modifier = Modifier.padding(bottom = 64.dp)
+            modifier = Modifier.padding(bottom = 32.dp)
         )
-
 
         TextField(
             value = username,
@@ -141,23 +140,25 @@ private fun CadastroForm(navController: NavHostController) {
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .fillMaxWidth(0.6f)
-                .height(32.dp)
+                .height(56.dp)
         )
 
-        Spacer(modifier = Modifier.height(28.dp))
+        Spacer(modifier = Modifier.height(10.dp))
+
 
         TextField(
-            value = username,
-            onValueChange = { username = it },
+            value = email,
+            onValueChange = { email = it },
             label = { Text("Email", fontSize = 14.sp) },
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .fillMaxWidth(0.6f)
-                .height(32.dp)
+                .height(56.dp)
         )
 
-        Spacer(modifier = Modifier.height(28.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
+        // Campo de Senha
         TextField(
             value = password,
             onValueChange = { password = it },
@@ -166,10 +167,11 @@ private fun CadastroForm(navController: NavHostController) {
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .fillMaxWidth(0.6f)
-                .height(32.dp)
+                .height(56.dp)
         )
 
-        Spacer(modifier = Modifier.height(28.dp))
+        Spacer(modifier = Modifier.height(10.dp))
+
 
         TextField(
             value = confirmPassword,
@@ -179,10 +181,11 @@ private fun CadastroForm(navController: NavHostController) {
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .fillMaxWidth(0.6f)
-                .height(32.dp)
+                .height(56.dp)
         )
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(10.dp))
+
 
         Button(
             onClick = {
@@ -195,7 +198,7 @@ private fun CadastroForm(navController: NavHostController) {
             colors = ButtonDefaults.buttonColors(
                 containerColor = (colorResource(id = R.color.CorDoBotao)),
                 contentColor = Color.Black
-                )
+            )
         ) {
             Text(
                 text = "Cadastrar",
