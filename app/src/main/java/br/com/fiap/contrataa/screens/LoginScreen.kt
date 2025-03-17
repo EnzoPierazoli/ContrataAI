@@ -8,13 +8,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -126,22 +126,18 @@ private fun LoginForm(navController: NavHostController) {
             modifier = Modifier
                 .size(240.dp)
                 .padding(bottom = 24.dp)
+                .offset(y = (-60).dp)
                 .background(Color(0xFF6141AC))
         )
 
         Text(
-            text = "Contrata AI",
-            fontSize = 24.sp,
-            textAlign = TextAlign.Center,
-            color = colorResource(id = R.color.CorDoTexto),
-            modifier = Modifier.padding(bottom = 6.dp)
-        )
-        Text(
             text = "Mostre seu talento, seja encontrado,\nSeja contratado!",
-            fontSize = 16.sp,
+            fontSize = 18.sp,
             textAlign = TextAlign.Center,
             color = colorResource(id = R.color.CorDoTexto),
-            modifier = Modifier.padding(bottom = 16.dp)
+            modifier = Modifier
+                .padding(bottom = 16.dp)
+                .offset(y = (-60).dp)
         )
 
         Spacer(modifier = Modifier.height(32.dp))
@@ -154,6 +150,7 @@ private fun LoginForm(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth(0.6f)
                 .height(32.dp)
+                .offset(y = (-50).dp)
         )
 
 
@@ -169,6 +166,7 @@ private fun LoginForm(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth(0.6f)
                 .height(32.dp)
+                .offset(y = (-45).dp)
         )
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -180,7 +178,8 @@ private fun LoginForm(navController: NavHostController) {
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .width(100.dp)
-                .height(40.dp),
+                .height(40.dp)
+                .offset(y = (-20).dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = colorResource(id = R.color.CorDoBotao),
                 contentColor = Color.Black,
