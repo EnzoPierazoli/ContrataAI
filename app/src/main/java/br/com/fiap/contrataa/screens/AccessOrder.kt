@@ -38,14 +38,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import br.com.fiap.contrataa.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AccessOrder(onBackClick: () -> Unit) {
+fun AccessOrder(navController: NavController) { // Recebe NavController como parâmetro
     val pedidos = listOf(
-        Pedido("20 de Fevereiro de 2025", "Pintor", "Agendado"),
-        Pedido("02 de Março de 2025", "Encanador", "Agendado"),
+        Pedido("02 de Fevereiro de 2025", "Pintor", "Agendado"),
+        Pedido("12 de Março de 2025", "Encanador", "Agendado"),
         Pedido("12 de Setembro de 2024", "Eletricista", "Já Realizado"),
         Pedido("10 de Junho de 2024", "Jardineiro", "Já Realizado"),
     )
@@ -74,7 +76,7 @@ fun AccessOrder(onBackClick: () -> Unit) {
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = onBackClick) {
+                    IconButton(onClick = { navController.navigate("homepage") }) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
                             contentDescription = "Voltar",
@@ -146,7 +148,7 @@ fun PedidoIconeComBorda(
         )
 
         PedidoIconeComBorda(
-            imageVector = Icons.Filled.CheckCircle, 
+            imageVector = Icons.Filled.CheckCircle,
             contentDescription = "Serviço realizado",
             borderColor = Color(0xFF4CAF50)
         )
@@ -208,6 +210,7 @@ fun PedidoItem(date: String, title: String, status: String, onClick: () -> Unit)
                 color = if (status == "Agendado") Color(0xFFFF9800) else Color(0xFF4CAF50),
                 fontWeight = FontWeight.Medium
             )
+
         }
     }
 }
@@ -227,5 +230,5 @@ fun SectionTitle(title: String) {
 @Preview(showBackground = true)
 @Composable
 fun AccessOrderPreview() {
-    AccessOrder(onBackClick = {})
+    AccessOrder(rememberNavController())
 }

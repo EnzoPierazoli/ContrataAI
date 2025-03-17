@@ -176,7 +176,7 @@ private fun LoginForm(navController: NavHostController) {
 
         Button(
             onClick = {
-                navController.navigate("homepage")
+                navController.navigate("accessOrder")
             },
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
