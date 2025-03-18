@@ -23,12 +23,33 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import br.com.fiap.contrataa.R
 import br.com.fiap.contrataa.ui.theme.FiapContrataaTheme
+import androidx.compose.material3.IconButton as IconButton
 
 @Composable
-fun UserProfile(onBackClick: () -> Unit, navController: NavHostController) {
+fun UserProfileScreen(navController: NavHostController) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Scaffold(
+            modifier = Modifier.fillMaxSize(),
+        ) { innerPadding ->
+            UserProfile(
+                onBackClick = { navController.popBackStack() },
+                navController = navController,
+                modifier = Modifier.padding(innerPadding)
+            )
+        }
+    }
+}
 
+
+
+@Composable
+fun UserProfile(
+    onBackClick: () -> Unit,
+    navController: NavHostController,
+    modifier: Modifier = Modifier
+) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Color(0xFF6141AC))
     ) {
@@ -47,7 +68,7 @@ fun UserProfile(onBackClick: () -> Unit, navController: NavHostController) {
 
         LazyColumn(
             modifier = Modifier
-                .fillMaxSize()
+                .weight(1f)
                 .padding(horizontal = 16.dp)
         ) {
             item {
@@ -111,10 +132,10 @@ fun UserProfile(onBackClick: () -> Unit, navController: NavHostController) {
                         navController = navController
                     )
 
-                    Spacer(modifier = Modifier.height(24.dp))
+                    Spacer(modifier = Modifier.height(12.dp))
 
                     Button(
-                        onClick = { navController.navigate("login")},
+                        onClick = { navController.navigate("login") },
                         colors = ButtonDefaults.buttonColors(containerColor = Color.Red),
                         modifier = Modifier
                             .fillMaxWidth(0.8f)
@@ -129,13 +150,13 @@ fun UserProfile(onBackClick: () -> Unit, navController: NavHostController) {
                         )
                     }
 
-                    Spacer(modifier = Modifier.height(24.dp))
+                    Spacer(modifier = Modifier.height(120.dp))
                 }
             }
         }
-
     }
 }
+
 @Composable
 fun InfoCard(title: String, content: List<String>, showButton: Boolean = false, navController: NavHostController) {
     Card(
@@ -174,12 +195,6 @@ fun InfoCard(title: String, content: List<String>, showButton: Boolean = false, 
     }
 }
 
-
-
-@Composable
-fun UserProfileScreen(navController: NavHostController) {
-        UserProfile(onBackClick = { navController.popBackStack() }, navController,)
-    }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

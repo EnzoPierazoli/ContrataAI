@@ -1,7 +1,6 @@
 package br.com.fiap.contrataa.screens
 
 import br.com.fiap.contrataa.R
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,9 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.material3.Icon
 import androidx.compose.ui.res.colorResource
@@ -42,7 +39,6 @@ fun HomePage(navController: NavHostController) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = { TopBar() },
-        bottomBar = { BottomBar(navController) }
     ) { innerPadding ->
         // Passa o padding interno para o MainContent
         MainContent(Modifier.padding(innerPadding))
@@ -69,7 +65,7 @@ fun MainContent(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.BackgroundRoxo))
-            .padding(16.dp)
+            .padding(top = 16.dp, start = 16.dp, end = 16.dp, bottom = 85.dp)
     ) {
         item {
             Spacer(modifier = Modifier.height(10.dp))
@@ -140,41 +136,6 @@ fun MainContent(modifier: Modifier = Modifier) {
     }
 }
 
-@Composable
-private fun BottomBar(navController: NavHostController) {
-    NavigationBar(
-        modifier = Modifier.height (85.dp),
-        containerColor = colorResource(id = R.color.BackgroundRoxo)
-    ) {
-        NavigationBarItem(
-            modifier = Modifier.height (56.dp),
-            icon = { Icon(Icons.Default.Home, contentDescription = "Inicio", tint = Color.White) },
-            label = { Text(stringResource(R.string.inicio), color = Color.White) },
-            selected = true,
-            onClick = {
-                navController.navigate("homepage")
-            },
-        )
-        NavigationBarItem(
-            modifier = Modifier.height (56.dp),
-            icon = { Icon(Icons.Default.ShoppingCart, contentDescription = "Serviços", tint = Color.White) },
-            label = { Text(stringResource(R.string.servicos), color = Color.White) },
-            selected = false,
-            onClick = {
-                navController.navigate("accessOrder")
-            },
-        )
-        NavigationBarItem(
-            modifier = Modifier.height (56.dp),
-            icon = { Icon(Icons.Default.Person , contentDescription = "Perfil", tint = Color.White) },
-            label = { Text(stringResource(R.string.perfil), color = Color.White) },
-            selected = false,
-            onClick = {
-                navController.navigate("perfil")
-            },
-        )
-    }
-}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

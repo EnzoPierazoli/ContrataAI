@@ -52,6 +52,7 @@ private fun AppScaffold(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         Box(
             modifier = Modifier
                 .weight(1f)
@@ -66,18 +67,25 @@ private fun AppScaffold(
 
 @Composable
 fun CadastroScreen(navController: NavHostController, onBackClick: () -> Unit) {
-    AppScaffold(title = "Cadastro") {
-        CadastroForm(navController)
-    }
+    Box(modifier = Modifier.fillMaxSize()) {
+        AppScaffold(title = "Cadastro") {
+            CadastroForm(navController)
+        }
 
-    IconButton(onClick = onBackClick, modifier = Modifier.offset(y = 24.dp)) {
-        Icon(
-            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-            contentDescription = "Voltar",
-            tint = Color.White
-        )
+        IconButton(
+            onClick = onBackClick,
+            modifier = Modifier
+                .offset(x = 16.dp, y = 16.dp)
+        ) {
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                contentDescription = "Voltar",
+                tint = Color.White
+            )
+        }
     }
 }
+
 
 @Composable
 private fun CadastroForm(navController: NavHostController) {

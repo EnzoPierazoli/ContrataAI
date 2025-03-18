@@ -19,17 +19,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -40,7 +35,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
+
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -58,8 +53,8 @@ fun AccessOrder(onBackClick: () -> Unit, navController: NavHostController) {
         Pedido("28 de Janeiro de 2025", "Encanador", "Já Realizado"),
         Pedido("22 de Janeiro de 2025", "Eletricista", "Já Realizado"),
         Pedido("15 de Janeiro de 2025", "Jardineiro", "Já Realizado"),
-        Pedido("08 de Janeiro de 2025", "Diarista", "Já Realizado"),
-        Pedido("03 de Janeiro de 2025", "Diarista", "Já Realizado"),
+        Pedido("08 de Janeiro de 2025", "Serviços Domésticos", "Já Realizado"),
+        Pedido("03 de Janeiro de 2025", "Serviços Domésticos", "Já Realizado"),
     )
 
     val emAndamento = pedidos.filter { it.status == "Agendado" }
@@ -89,9 +84,6 @@ fun AccessOrder(onBackClick: () -> Unit, navController: NavHostController) {
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFF6141AC))
             )
         },
-        bottomBar = {
-            BottomBar(navController)
-        }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -103,7 +95,7 @@ fun AccessOrder(onBackClick: () -> Unit, navController: NavHostController) {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(top = 16.dp),
+                    .padding(top = 16.dp, bottom = 85.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 if (emAndamento.isNotEmpty()) {
@@ -237,41 +229,6 @@ fun SectionTitle(title: String) {
     )
 }
 
-@Composable
-private fun BottomBar(navController: NavHostController) {
-    NavigationBar(
-        modifier = Modifier.height (85.dp),
-        containerColor = colorResource(id = R.color.BackgroundRoxo)
-    ) {
-        NavigationBarItem(
-            modifier = Modifier.height (56.dp),
-            icon = { Icon(Icons.Default.Home, contentDescription = "Inicio", tint = Color.White) },
-            label = { Text(stringResource(R.string.inicio), color = Color.White) },
-            selected = false,
-            onClick = {
-                navController.navigate("homepage")
-            },
-        )
-        NavigationBarItem(
-            modifier = Modifier.height (56.dp),
-            icon = { Icon(Icons.Default.ShoppingCart, contentDescription = "Serviços", tint = Color.White) },
-            label = { Text(stringResource(R.string.servicos), color = Color.White) },
-            selected = true,
-            onClick = {
-                navController.navigate("accessOrder")
-            },
-        )
-        NavigationBarItem(
-            modifier = Modifier.height (56.dp),
-            icon = { Icon(Icons.Default.Person , contentDescription = "Perfil", tint = Color.White) },
-            label = { Text(stringResource(R.string.perfil), color = Color.White) },
-            selected = false,
-            onClick = {
-                navController.navigate("perfil")
-            },
-        )
-    }
-}
 
 // Preview
 @Preview(showBackground = true)
