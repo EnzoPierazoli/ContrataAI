@@ -103,9 +103,9 @@ fun UserProfile(onBackClick: () -> Unit, navController: NavHostController) {
                     InfoCard(
                         title = "Histórico de Serviços",
                         content = listOf(
-                            "Eletricista - 12/09/2024",
-                            "Jardineiro - 10/06/2024",
-                            "Diarista - 08/05/2024",
+                            "Encanador - 28/01/2025",
+                            "Eletricista - 22/01/2025",
+                            "Jardineiro - 12/01/2025",
                         ),
                         showButton = true,
                         navController = navController

@@ -54,10 +54,12 @@ import br.com.fiap.contrataa.R
 fun AccessOrder(onBackClick: () -> Unit, navController: NavHostController) {
     val pedidos = listOf(
         Pedido("02 de Abril de 2025", "Pintor", "Agendado"),
-        Pedido("20 de Abril de 2025", "Encanador", "Agendado"),
-        Pedido("12 de Setembro de 2024", "Eletricista", "Já Realizado"),
-        Pedido("10 de Junho de 2024", "Jardineiro", "Já Realizado"),
-        Pedido("08 de Maio de 2024", "Diarista", "Já Realizado"),
+        Pedido("20 de Março de 2025", "Encanador", "Agendado"),
+        Pedido("28 de Janeiro de 2025", "Encanador", "Já Realizado"),
+        Pedido("22 de Janeiro de 2025", "Eletricista", "Já Realizado"),
+        Pedido("15 de Janeiro de 2025", "Jardineiro", "Já Realizado"),
+        Pedido("08 de Janeiro de 2025", "Diarista", "Já Realizado"),
+        Pedido("03 de Janeiro de 2025", "Diarista", "Já Realizado"),
     )
 
     val emAndamento = pedidos.filter { it.status == "Agendado" }

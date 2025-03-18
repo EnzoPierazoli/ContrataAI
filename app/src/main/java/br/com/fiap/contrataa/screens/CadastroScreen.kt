@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -51,7 +52,6 @@ private fun AppScaffold(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-//        Header(title)
         Box(
             modifier = Modifier
                 .weight(1f)
@@ -60,46 +60,9 @@ private fun AppScaffold(
         ) {
             content()
         }
-//        Footer()
     }
 }
 
-// Footer e Header caso precise
-
-//@Composable
-//private fun Header(title: String) {
-//    Box(
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .height(60.dp)
-//            .background(colorResource(id = R.color.BackgroundRoxo)),
-//        contentAlignment = Alignment.Center
-//    ) {
-//        Text(
-//            text = title,
-//            fontSize = 24.sp,
-//            fontWeight = FontWeight.Bold,
-//            color = colorResource(id = R.color.CorDoTexto)
-//        )
-//    }
-//}
-//
-//@Composable
-//private fun Footer() {
-//    Box(
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .height(40.dp)
-//            .background(colorResource(id = R.color.BackgroundRoxo)),
-//        contentAlignment = Alignment.Center
-//    ) {
-//        Text(
-//            text = "ContrataAí",
-//            fontSize = 12.sp,
-//            color = colorResource(id = R.color.CorDoTexto)
-//        )
-//    }
-//}
 
 @Composable
 fun CadastroScreen(navController: NavHostController, onBackClick: () -> Unit) {
@@ -109,7 +72,7 @@ fun CadastroScreen(navController: NavHostController, onBackClick: () -> Unit) {
 
     IconButton(onClick = onBackClick, modifier = Modifier.offset(y = 24.dp)) {
         Icon(
-            imageVector = Icons.Filled.ArrowBack,
+            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
             contentDescription = "Voltar",
             tint = Color.White
         )
@@ -143,7 +106,7 @@ private fun CadastroForm(navController: NavHostController) {
         )
 
         Text(
-            text = (stringResource(R.string.first_string)),
+            text = (stringResource(R.string.first_string1)),
             fontSize = 24.sp,
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.Bold,
@@ -158,7 +121,7 @@ private fun CadastroForm(navController: NavHostController) {
         TextField(
             value = username,
             onValueChange = { username = it },
-            label = { Text(stringResource(R.string.first_TextField), fontSize = 14.sp) },
+            label = { Text(stringResource(R.string.first_textField1), fontSize = 14.sp) },
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .fillMaxWidth(0.6f)
@@ -171,7 +134,7 @@ private fun CadastroForm(navController: NavHostController) {
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text(stringResource(R.string.second_TextField), fontSize = 14.sp) },
+            label = { Text(stringResource(R.string.second_textField1), fontSize = 14.sp) },
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
                 .fillMaxWidth(0.6f)
@@ -184,7 +147,7 @@ private fun CadastroForm(navController: NavHostController) {
         TextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text(stringResource(R.string.third_textField), fontSize = 14.sp) },
+            label = { Text(stringResource(R.string.third_textField1), fontSize = 14.sp) },
             visualTransformation = PasswordVisualTransformation(),
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
@@ -198,7 +161,7 @@ private fun CadastroForm(navController: NavHostController) {
         TextField(
             value = confirmPassword,
             onValueChange = { confirmPassword = it },
-            label = { Text(stringResource(R.string.fourth_textField), fontSize = 14.sp) },
+            label = { Text(stringResource(R.string.fourth_textField1), fontSize = 14.sp) },
             visualTransformation = PasswordVisualTransformation(),
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
@@ -222,7 +185,7 @@ private fun CadastroForm(navController: NavHostController) {
             )
         ) {
             Text(
-                text = (stringResource(R.string.button_text_cadastro)),
+                text = (stringResource(R.string.button_text_cadastro1)),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold
             )

@@ -15,12 +15,12 @@
     // Todas Strings da CadastroScreen
 
     //------------------------------------------------------------------------------------
-    <string name="first_string">Crie sua Conta!</string>
-    <string name="first_textField">Nome de Usuário</string>
-    <string name="second_textField">Email</string>
-    <string name="third_textField">Senha</string>
-    <string name="fourth_textField">Confirme sua Senha</string>
-    <string name="button_text_cadastro">Cadastrar</string>
+    <string name="first_string1">Crie sua Conta!</string>
+    <string name="first_textField1">Nome de Usuário</string>
+    <string name="second_textField1">Email</string>
+    <string name="third_textField1">Senha</string>
+    <string name="fourth_textField1">Confirme sua Senha</string>
+    <string name="button_text_cadastro1">Cadastrar</string>
 
     //------------------------------------------------------------------------------------
 
