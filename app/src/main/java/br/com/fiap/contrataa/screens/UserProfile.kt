@@ -28,6 +28,7 @@ import br.com.fiap.contrataa.ui.theme.FiapContrataaTheme
 
 @Composable
 fun UserProfile(onBackClick: () -> Unit, navController: NavHostController) {
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -87,11 +88,14 @@ fun UserProfile(onBackClick: () -> Unit, navController: NavHostController) {
                     Spacer(modifier = Modifier.height(24.dp))
 
                     InfoCard(
-                        title = "Informações do Profissional",
+                        title = "Informações Pessoais",
                         content = listOf(
-                            "Especialidade: Eletricista",
-                            "Experiência: 5 anos",
-                            "Certificações: NR-10, NR-35"
+                            "Idade: 37 anos",
+                            "Sexo: Masculino",
+                            "Pais Origem: África",
+                            "Cidade Atual: Santo André - SP",
+                            "Serviços Contratados: 3",
+                            "Deficiência: Nanismo",
                         ),
                         navController = navController
                     )
@@ -100,7 +104,11 @@ fun UserProfile(onBackClick: () -> Unit, navController: NavHostController) {
 
                     InfoCard(
                         title = "Histórico de Serviços",
-                        content = listOf("Instalação Elétrica - 12/03/2025"),
+                        content = listOf(
+                            "Eletricista - 12/09/2024",
+                            "Jardineiro - 10/06/2024",
+                            "Diarista - 08/05/2024",
+                        ),
                         showButton = true,
                         navController = navController
                     )
@@ -172,7 +180,7 @@ fun InfoCard(title: String, content: List<String>, showButton: Boolean = false, 
 
 @Composable
 fun UserProfileScreen(navController: NavHostController) {
-        UserProfile(onBackClick = { navController.popBackStack() }, navController)
+        UserProfile(onBackClick = { navController.popBackStack() }, navController,)
     }
 
 
