@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -49,7 +50,6 @@ private fun AppScaffold(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-//        Header(title)
         Box(
             modifier = Modifier
                 .weight(1f)
@@ -58,48 +58,8 @@ private fun AppScaffold(
         ) {
             content()
         }
-//        Footer()
     }
 }
-
-// Header e Footer caso precise
-
-//@Composable
-//private fun Header(title: String) {
-//    Box(
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .height(60.dp)
-//            .background(Color(0xFF57449a)),
-//        contentAlignment = Alignment.Center
-//    ) {
-//        Text(
-//            text = title,
-//            fontSize = 24.sp,
-//            fontWeight = FontWeight.Bold,
-//            color = CorDoTexto
-//        )
-//    }
-//}
-//
-//@Composable
-//private fun Footer() {
-//    Box(
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .height(40.dp)
-//            .background(Color(0xFF57449a))
-//            .padding(bottom = 10.dp),
-//        contentAlignment = Alignment.Center
-//
-//    ) {
-//        Text(
-//            text = "ContrataAI",
-//            fontSize = 12.sp,
-//            color = CorDoTexto
-//        )
-//    }
-//}
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
@@ -118,7 +78,7 @@ private fun LoginForm(navController: NavHostController) {
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF6141AC))
+            .background(colorResource(id = R.color.BackgroundRoxo))
     ) {
 
         Image(
@@ -128,13 +88,14 @@ private fun LoginForm(navController: NavHostController) {
                 .size(240.dp)
                 .padding(bottom = 24.dp)
                 .offset(y = (-60).dp)
-                .background(Color(0xFF6141AC))
+                .background(colorResource(id = R.color.BackgroundRoxo))
         )
 
         Text(
-            text = "Mostre seu talento, seja encontrado,\nSeja contratado!",
+            text = stringResource(R.string.slogan),
             fontSize = 18.sp,
             textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
             color = colorResource(id = R.color.CorDoTexto),
             modifier = Modifier
                 .padding(bottom = 16.dp)
@@ -146,7 +107,7 @@ private fun LoginForm(navController: NavHostController) {
         TextField(
             value = username,
             onValueChange = { username = it },
-            label = { Text("Nome de Usuário", fontSize = 14.sp) },
+            label = { Text(stringResource(R.string.first_TextField), fontSize = 14.sp) },
             shape = RoundedCornerShape(8.dp),
             keyboardOptions = KeyboardOptions.Default,
             modifier = Modifier
@@ -156,13 +117,13 @@ private fun LoginForm(navController: NavHostController) {
 
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(5.dp))
 
 
         TextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text("Senha", fontSize = 14.sp) },
+            label = { Text(stringResource(R.string.second_TextField), fontSize = 14.sp) },
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions.Default,
             shape = RoundedCornerShape(8.dp),
@@ -172,7 +133,7 @@ private fun LoginForm(navController: NavHostController) {
                 .offset(y = (-45).dp)
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
         Button(
             onClick = {
@@ -189,8 +150,8 @@ private fun LoginForm(navController: NavHostController) {
             )
         ) {
             Text(
-                text = "Entrar",
                 fontSize = 16.sp,
+                text = (stringResource(R.string.button_text)),
                 fontWeight = FontWeight.Bold
             )
         }
@@ -198,13 +159,13 @@ private fun LoginForm(navController: NavHostController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         Text(
-            text = "Não possui cadastro ainda?",
+            text = (stringResource(R.string.string_underbutton)),
             fontSize = 16.sp,
             color = colorResource(id = R.color.CorDoTexto),
             textAlign = TextAlign.Center,
         )
         Text(
-            text = "Clique AQUI",
+            text = (stringResource(R.string.clique_aqui)),
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
             textDecoration = TextDecoration.Underline,

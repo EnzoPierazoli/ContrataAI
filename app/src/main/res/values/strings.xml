@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Contrata AI</string>
+
+    // Todas Strings da LoginScreen
+
+    //------------------------------------------------------------------------------------
+    <string name="slogan">Inclusão que transforma, talento que inspira!</string>
+    <string name="first_TextField">Nome de Usuário</string>
+    <string name="second_TextField">Senha</string>
+    <string name="button_text_login">Entrar</string>
+    <string name="string_underbutton">Não possui cadastro ainda?</string>
+    <string name="clique_aqui">Clique AQUI</string>
+    //------------------------------------------------------------------------------------
+
+    // Todas Strings da CadastroScreen
+
+    //------------------------------------------------------------------------------------
+    <string name="first_string">Crie sua Conta!</string>
+    <string name="first_textField">Nome de Usuário</string>
+    <string name="second_textField">Email</string>
+    <string name="third_textField">Senha</string>
+    <string name="fourth_textField">Confirme sua Senha</string>
+    <string name="button_text_cadastro">Cadastrar</string>
+
+    //------------------------------------------------------------------------------------
+
+
 </resources>
