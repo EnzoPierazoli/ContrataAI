@@ -151,7 +151,7 @@ private fun LoginForm(navController: NavHostController) {
         ) {
             Text(
                 fontSize = 16.sp,
-                text = (stringResource(R.string.button_text)),
+                text = (stringResource(R.string.button_text_login)),
                 fontWeight = FontWeight.Bold
             )
         }

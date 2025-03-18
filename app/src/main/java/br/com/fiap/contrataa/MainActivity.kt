@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("homepage") { HomePage() }
                         composable("perfil") { UserProfile(onBackClick = { navController.popBackStack() }) }
-                        composable("accessOrder") { AccessOrder(navController)}
+                        composable("accessOrder") { AccessOrder(onBackClick = { navController.popBackStack() }) }
                     }
                 }
             }

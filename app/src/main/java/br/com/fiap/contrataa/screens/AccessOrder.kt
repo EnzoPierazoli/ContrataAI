@@ -44,12 +44,13 @@ import br.com.fiap.contrataa.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AccessOrder(navController: NavController) { // Recebe NavController como parâmetro
+fun AccessOrder(onBackClick: () -> Unit) {
     val pedidos = listOf(
-        Pedido("02 de Fevereiro de 2025", "Pintor", "Agendado"),
-        Pedido("12 de Março de 2025", "Encanador", "Agendado"),
+        Pedido("02 de Abril de 2025", "Pintor", "Agendado"),
+        Pedido("20 de Abril de 2025", "Encanador", "Agendado"),
         Pedido("12 de Setembro de 2024", "Eletricista", "Já Realizado"),
         Pedido("10 de Junho de 2024", "Jardineiro", "Já Realizado"),
+        Pedido("08 de Maio de 2024", "Diarista", "Já Realizado"),
     )
 
     val emAndamento = pedidos.filter { it.status == "Agendado" }
@@ -76,7 +77,7 @@ fun AccessOrder(navController: NavController) { // Recebe NavController como par
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = { navController.navigate("homepage") }) {
+                    IconButton(onClick = onBackClick) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
                             contentDescription = "Voltar",
@@ -230,5 +231,5 @@ fun SectionTitle(title: String) {
 @Preview(showBackground = true)
 @Composable
 fun AccessOrderPreview() {
-    AccessOrder(rememberNavController())
+    AccessOrder(onBackClick = {})
 }
