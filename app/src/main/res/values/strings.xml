@@ -24,5 +24,24 @@
 
     //------------------------------------------------------------------------------------
 
+    // Todas Strings da HomePage
+
+    //------------------------------------------------------------------------------------
+    <string name="boas_vindas">Boas-Vindas</string>
+    <string name="placeholder1">O que você procura?</string>
+    <string name="assistencia_tecnica">"Assistência Técnica"</string>
+    <string name="reformas_reparos">Reformas e Reparos</string>
+    <string name="servicos_domesticos">Serviços Domésticos</string>
+    <string name="servicos_eletricos">Serviços Elétricos</string>
+    <string name="mudancas_carretos">Mudanças e Carretos</string>
+    <string name="mais_servicos">Mais Serviços</string>
+    <string name="aulas">Mais Aulas</string>
+    <string name="eventos">Eventos</string>
+    <string name="marcenaria">Marcenaria</string>
+    <string name="inicio">Início</string>
+    <string name="pedidos">Pedidos</string>
+    <string name="perfil">Perfil</string>
+
+    //------------------------------------------------------------------------------------
 
 </resources>
