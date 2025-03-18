@@ -43,7 +43,6 @@ import br.com.fiap.contrataa.ui.theme.FiapContrataaTheme
 
 @Composable
 private fun AppScaffold(
-    title: String,
     content: @Composable () -> Unit
 ) {
     Column(
@@ -63,7 +62,7 @@ private fun AppScaffold(
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
-    AppScaffold(title = "login") {
+    AppScaffold() {
         LoginForm(navController)
     }
 }

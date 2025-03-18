@@ -16,7 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Home
@@ -45,7 +45,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import br.com.fiap.contrataa.R
@@ -70,7 +69,7 @@ fun AccessOrder(onBackClick: () -> Unit, navController: NavHostController) {
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = "Meus Pedidos",
+                        text = "Meus Serviços",
                         fontSize = 30.sp,
                         color = colorResource(id = R.color.CorDoTexto),
                         fontWeight = FontWeight.Bold
@@ -79,7 +78,7 @@ fun AccessOrder(onBackClick: () -> Unit, navController: NavHostController) {
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(
-                            imageVector = Icons.Filled.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Voltar",
                             tint = Color.White
                         )
@@ -253,8 +252,8 @@ private fun BottomBar(navController: NavHostController) {
         )
         NavigationBarItem(
             modifier = Modifier.height (56.dp),
-            icon = { Icon(Icons.Default.ShoppingCart, contentDescription = "Pedidos", tint = Color.White) },
-            label = { Text(stringResource(R.string.pedidos), color = Color.White) },
+            icon = { Icon(Icons.Default.ShoppingCart, contentDescription = "Serviços", tint = Color.White) },
+            label = { Text(stringResource(R.string.servicos), color = Color.White) },
             selected = true,
             onClick = {
                 navController.navigate("accessOrder")

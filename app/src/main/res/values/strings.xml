@@ -35,11 +35,11 @@
     <string name="servicos_eletricos">Serviços Elétricos</string>
     <string name="mudancas_carretos">Mudanças e Carretos</string>
     <string name="mais_servicos">Mais Serviços</string>
-    <string name="aulas">Mais Aulas</string>
+    <string name="aulas">Cursos</string>
     <string name="eventos">Eventos</string>
-    <string name="marcenaria">Marcenaria</string>
+    <string name="marcenaria">NetWorking</string>
     <string name="inicio">Início</string>
-    <string name="pedidos">Pedidos</string>
+    <string name="servicos">Serviços</string>
     <string name="perfil">Perfil</string>
 
     //------------------------------------------------------------------------------------
