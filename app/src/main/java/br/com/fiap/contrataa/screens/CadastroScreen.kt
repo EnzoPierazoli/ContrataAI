@@ -210,7 +210,7 @@ private fun CadastroForm(navController: NavHostController) {
 
         Button(
             onClick = {
-                navController.navigate("perfil")
+                navController.navigate("homepage")
             },
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier

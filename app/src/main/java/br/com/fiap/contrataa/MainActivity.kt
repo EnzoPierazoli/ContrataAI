@@ -31,14 +31,10 @@ class MainActivity : ComponentActivity() {
                 ) {
                     NavHost(navController, startDestination = "login") {
                         composable("login") { LoginScreen(navController) }
-                        composable("cadastro") {
-                            CadastroScreen(
-                                navController,
-                                onBackClick = { navController.popBackStack() })
-                        }
-                        composable("homepage") { HomePage() }
-                        composable("perfil") { UserProfile(onBackClick = { navController.popBackStack() }) }
-                        composable("accessOrder") { AccessOrder(onBackClick = { navController.popBackStack() }) }
+                        composable("cadastro") { CadastroScreen(navController, onBackClick = { navController.popBackStack() }) }
+                        composable("homepage") { HomePage(navController) }
+                        composable("perfil") { UserProfile(onBackClick = { navController.popBackStack() }, navController) }
+                        composable("accessOrder") { AccessOrder(onBackClick = { navController.popBackStack() }, navController) }
                     }
                 }
             }

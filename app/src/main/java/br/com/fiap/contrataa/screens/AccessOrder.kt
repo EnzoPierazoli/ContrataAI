@@ -19,12 +19,18 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -34,17 +40,19 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import br.com.fiap.contrataa.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AccessOrder(onBackClick: () -> Unit) {
+fun AccessOrder(onBackClick: () -> Unit, navController: NavHostController) {
     val pedidos = listOf(
         Pedido("02 de Abril de 2025", "Pintor", "Agendado"),
         Pedido("20 de Abril de 2025", "Encanador", "Agendado"),
@@ -56,17 +64,9 @@ fun AccessOrder(onBackClick: () -> Unit) {
     val emAndamento = pedidos.filter { it.status == "Agendado" }
     val jaRealizados = pedidos.filter { it.status == "Já Realizado" }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFF6141AC))
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 20.dp)
-        ) {
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
             CenterAlignedTopAppBar(
                 title = {
                     Text(
@@ -87,36 +87,46 @@ fun AccessOrder(onBackClick: () -> Unit) {
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFF6141AC))
             )
+        },
+        bottomBar = {
+            BottomBar(navController)
         }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        LazyColumn(
+    ) { innerPadding ->
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .background(Color(0xFF6141AC))
+                .padding(innerPadding)
         ) {
-            if (emAndamento.isNotEmpty()) {
-                item {
-                    SectionTitle(title = "Serviços em Andamento")
+            Spacer(modifier = Modifier.height(16.dp))
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                if (emAndamento.isNotEmpty()) {
+                    item {
+                        SectionTitle(title = "Serviços em Andamento")
+                    }
+                    items(emAndamento) { pedido ->
+                        PedidoItem(pedido.date, pedido.title, pedido.status) { }
+                    }
                 }
-                items(emAndamento) { pedido ->
-                    PedidoItem(pedido.date, pedido.title, pedido.status) { /* Navegar para detalhes */ }
-                }
-            }
-
-            if (jaRealizados.isNotEmpty()) {
-                item {
-                    SectionTitle(title = "Serviços Já Realizados")
-                }
-                items(jaRealizados) { pedido ->
-                    PedidoItem(pedido.date, pedido.title, pedido.status) { /* Navegar para detalhes */ }
+                if (jaRealizados.isNotEmpty()) {
+                    item {
+                        SectionTitle(title = "Serviços Já Realizados")
+                    }
+                    items(jaRealizados) { pedido ->
+                        PedidoItem(pedido.date, pedido.title, pedido.status) { }
+                    }
                 }
             }
         }
     }
 }
+
+
 
 @Composable
 fun PedidoIconeComBorda(
@@ -211,7 +221,6 @@ fun PedidoItem(date: String, title: String, status: String, onClick: () -> Unit)
                 color = if (status == "Agendado") Color(0xFFFF9800) else Color(0xFF4CAF50),
                 fontWeight = FontWeight.Medium
             )
-
         }
     }
 }
@@ -227,9 +236,45 @@ fun SectionTitle(title: String) {
     )
 }
 
+@Composable
+private fun BottomBar(navController: NavHostController) {
+    NavigationBar(
+        modifier = Modifier.height (85.dp),
+        containerColor = colorResource(id = R.color.BackgroundRoxo)
+    ) {
+        NavigationBarItem(
+            modifier = Modifier.height (56.dp),
+            icon = { Icon(Icons.Default.Home, contentDescription = "Inicio", tint = Color.White) },
+            label = { Text(stringResource(R.string.inicio), color = Color.White) },
+            selected = false,
+            onClick = {
+                navController.navigate("homepage")
+            },
+        )
+        NavigationBarItem(
+            modifier = Modifier.height (56.dp),
+            icon = { Icon(Icons.Default.ShoppingCart, contentDescription = "Pedidos", tint = Color.White) },
+            label = { Text(stringResource(R.string.pedidos), color = Color.White) },
+            selected = true,
+            onClick = {
+                navController.navigate("accessOrder")
+            },
+        )
+        NavigationBarItem(
+            modifier = Modifier.height (56.dp),
+            icon = { Icon(Icons.Default.Person , contentDescription = "Perfil", tint = Color.White) },
+            label = { Text(stringResource(R.string.perfil), color = Color.White) },
+            selected = false,
+            onClick = {
+                navController.navigate("perfil")
+            },
+        )
+    }
+}
+
 // Preview
 @Preview(showBackground = true)
 @Composable
 fun AccessOrderPreview() {
-    AccessOrder(onBackClick = {})
+    AccessOrder(onBackClick = {},navController = rememberNavController())
 }

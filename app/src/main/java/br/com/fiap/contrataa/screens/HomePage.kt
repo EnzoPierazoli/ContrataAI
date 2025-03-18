@@ -21,19 +21,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.material3.Icon
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import androidx.wear.compose.material3.AppScaffold
 
 @Composable
-fun HomePage() {
-    MaterialTheme {
-        Scaffold(
-            modifier = Modifier.fillMaxSize(),
-            topBar = { TopBar() },
-            bottomBar = { BottomBar() }
-        ) { innerPadding ->
-            MainContent(Modifier.padding(innerPadding))
-        }
+fun HomePage(navController: NavHostController) {
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = { TopBar() },
+        bottomBar = { BottomBar(navController) }
+    ) { innerPadding ->
+        MainContent(Modifier.padding(innerPadding))
     }
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -152,42 +154,42 @@ fun MainContent(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(30.dp))
         Text(stringResource(R.string.mais_servicos), fontSize = 25.sp, fontWeight = FontWeight.Bold, color = Color.White)
         Spacer(modifier = Modifier.height(10.dp))
-        MoreServices()
+//        MoreServices()
     }
 }
 
-@Composable
-fun MoreServices() {
-    NavigationBar(
-        modifier = Modifier.height (95.dp),
-        containerColor = colorResource(id = R.color.BackgroundRoxo)
-    ) {
-        NavigationBarItem(
-            modifier = Modifier.height (56.dp),
-            icon = { Icon(Icons.Default.AddCircle, contentDescription = "Aulas", tint = Color.White) },
-            label = { Text(stringResource(R.string.aulas), color = Color.White) },
-            selected = false,
-            onClick = { /* TODO */ }
-        )
-        NavigationBarItem(
-            modifier = Modifier.height (56.dp),
-            icon = { Icon(Icons.Default.AddCircle, contentDescription = "Eventos", tint = Color.White) },
-            label = { Text(stringResource(R.string.eventos), color = Color.White) },
-            selected = false,
-            onClick = { /* TODO */ }
-        )
-        NavigationBarItem(
-            modifier = Modifier.height (56.dp),
-            icon = { Icon(Icons.Default.AddCircle, contentDescription = "Marcenaria", tint = Color.White) },
-            label = { Text(stringResource(R.string.marcenaria), color = Color.White) },
-            selected = false,
-            onClick = { /* TODO */ }
-        )
-    }
-}
+//@Composable
+//fun MoreServices() {
+//    NavigationBar(
+//        modifier = Modifier.height (95.dp),
+//        containerColor = colorResource(id = R.color.BackgroundRoxo)
+//    ) {
+//        NavigationBarItem(
+//            modifier = Modifier.height (56.dp),
+//            icon = { Icon(Icons.Default.AddCircle, contentDescription = "Aulas", tint = Color.White) },
+//            label = { Text(stringResource(R.string.aulas), color = Color.White) },
+//            selected = false,
+//            onClick = { /* TODO */ }
+//        )
+//        NavigationBarItem(
+//            modifier = Modifier.height (56.dp),
+//            icon = { Icon(Icons.Default.AddCircle, contentDescription = "Eventos", tint = Color.White) },
+//            label = { Text(stringResource(R.string.eventos), color = Color.White) },
+//            selected = false,
+//            onClick = { /* TODO */ }
+//        )
+//        NavigationBarItem(
+//            modifier = Modifier.height (56.dp),
+//            icon = { Icon(Icons.Default.AddCircle, contentDescription = "Marcenaria", tint = Color.White) },
+//            label = { Text(stringResource(R.string.marcenaria), color = Color.White) },
+//            selected = false,
+//            onClick = { /* TODO */ }
+//        )
+//    }
+//}
 
 @Composable
-fun BottomBar() {
+private fun BottomBar(navController: NavHostController) {
     NavigationBar(
         modifier = Modifier.height (85.dp),
         containerColor = colorResource(id = R.color.BackgroundRoxo)
@@ -197,21 +199,27 @@ fun BottomBar() {
             icon = { Icon(Icons.Default.Home, contentDescription = "Inicio", tint = Color.White) },
             label = { Text(stringResource(R.string.inicio), color = Color.White) },
             selected = true,
-            onClick = { /* TODO */ }
+            onClick = {
+                navController.navigate("homepage")
+            },
         )
         NavigationBarItem(
             modifier = Modifier.height (56.dp),
             icon = { Icon(Icons.Default.ShoppingCart, contentDescription = "Pedidos", tint = Color.White) },
             label = { Text(stringResource(R.string.pedidos), color = Color.White) },
             selected = false,
-            onClick = { /* TODO */ }
+            onClick = {
+                navController.navigate("accessOrder")
+            },
         )
         NavigationBarItem(
             modifier = Modifier.height (56.dp),
             icon = { Icon(Icons.Default.Person , contentDescription = "Perfil", tint = Color.White) },
             label = { Text(stringResource(R.string.perfil), color = Color.White) },
             selected = false,
-            onClick = { /* TODO */ }
+            onClick = {
+                navController.navigate("perfil")
+            },
         )
     }
 }
@@ -219,5 +227,5 @@ fun BottomBar() {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewHomePage() {
-    HomePage()
+    HomePage(navController = rememberNavController())
 }
