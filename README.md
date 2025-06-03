@@ -1,6 +1,3 @@
-Claro! Com base nas informações fornecidas e na descrição do seu projeto, aqui está uma sugestão de README para o seu repositório ContrataAI:
-
----
 
 # ContrataAI
 
